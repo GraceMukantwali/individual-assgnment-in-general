@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .testimonial-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slide {
+    display: none;
+    width: 100%;
+    height: 300px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .slide img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .slide p {
+    margin: 10px 0;
+  }
+  
+  .slide h3, .slide h4 {
+    font-weight: normal;
+  }
+  
+  .active {
+    display: block;
+  }
+  
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .navigation button {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .slide img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  Use code with caution. Learn more
+  JavaScript:
+  
+  JavaScript
+  const slides = document.querySelectorAll(".slide");
+  const nextBtn = document.querySelector(".next-btn");
+  const prevBtn = document.querySelector(".prev-btn");
+  
+  let activeSlide = 0;
+  
+  nextBtn.addEventListener("click", () => {
+    slides[activeSlide].classList.remove("active");
+    activeSlide++;
+  
+    if (activeSlide === slides.length) {
+      activeSlide = 0;
+    }
+  
+    slides[activeSlide].classList.add("active");
+  });
+  
+  prevBtn.addEventListener("click", () => {
+    slides[activeSlide].classList.remove("active");
+    activeSlide--;
+  
+    if (activeSlide < 0) {
+      activeSlide = slides.length - 1;
+    }
+  
+    slides[activeSlide].classList.add("active");
+  });
